@@ -1,59 +1,43 @@
-# Cloud Autopilot – Production-Grade AWS Networking with Terraform
+# Cloud Autopilot VPC — Terraform IaC
 
-## Overview
-Cloud Autopilot is a production-ready AWS networking foundation built using Terraform.  
-It demonstrates how to **adopt existing AWS infrastructure into Terraform**, resolve real-world state conflicts, and manage a scalable, secure VPC architecture.
+This project provisions a production-ready AWS VPC using Terraform, following AWS networking best practices.
 
-This project reflects **enterprise infrastructure practices**, not tutorials.
+## Architecture Overview
 
----
-
-## Architecture
-**Region:** us-east-2 (Ohio)
-
-**VPC Design**
-- Custom VPC: `10.0.0.0/16`
-- DNS support & hostnames enabled
-
-**Subnets**
-- Public Subnet A (us-east-2a) – `10.0.1.0/24`
-- Public Subnet B (us-east-2b) – `10.0.3.0/24`
-- Private Subnet A (us-east-2a) – `10.0.2.0/24`
-
-**Routing**
-- Internet Gateway for public subnets
+- Custom VPC (10.0.0.0/16)
+- Public and private subnets across AZs
+- Internet Gateway for public access
 - NAT Gateway for private subnet egress
 - Separate public and private route tables
+- Explicit subnet-to-route-table associations
+- Fully managed via Terraform (IaC)
 
-**Compute**
-- Auto Scaling Group (1–2 instances)
-- EC2 managed exclusively via AWS Systems Manager (no SSH)
+## AWS Resources
 
----
+- VPC
+- Subnets (Public & Private)
+- Internet Gateway
+- NAT Gateway + Elastic IP
+- Route Tables (Public & Private)
+- Route Table Associations
 
-## Key Skills Demonstrated
-- Terraform state imports (VPC, subnets, IGW, NAT, route tables)
-- Resolving route table association conflicts
-- Managing AWS defaults without destructive changes
-- Production-safe Terraform workflows
-- Cost-aware scaling and infrastructure control
+## Terraform Features
 
----
+- Clean, modular Terraform files
+- Tagged resources for clarity and cost tracking
+- `terraform plan` shows **no drift**
+- Infrastructure fully reconciled with state
 
-## Why This Matters
-Most Terraform examples start from scratch.
+## Screenshots
 
-This project shows how to:
-- Take **existing AWS infrastructure**
-- Bring it under Terraform management
-- Fix real-world drift and conflicts
-- End with a clean, controlled state
+### AWS Console (Architecture)
+See `cloud-autopilot-terraform-screens/01-aws-console/`
 
-This mirrors what engineers do in **live environments**.
-
----
+### Terraform Validation
+See `cloud-autopilot-terraform-screens/02-terminal-vscode/09-terraform-plan-clean.png`
 
 ## How to Use
+
 ```bash
 terraform init
 terraform plan
