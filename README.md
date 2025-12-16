@@ -18,12 +18,12 @@ This project provisions a **production-ready AWS VPC** using Terraform, followin
 
 ## ☁️ AWS Resources Provisioned
 
-- VPC
-- Public & Private Subnets
-- Internet Gateway
-- NAT Gateway + Elastic IP
-- Public & Private Route Tables
-- Route Table Associations
+- VPC  
+- Public & Private Subnets  
+- Internet Gateway  
+- NAT Gateway + Elastic IP  
+- Public & Private Route Tables  
+- Route Table Associations  
 
 ---
 
